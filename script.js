@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 userInput.value = ''; // Clear input
 
                 // Send the message to the API
-                fetch('https://your-api-endpoint.com/chat', { // Replace with your actual API endpoint
+                fetch(''https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBIl8QF2rAEcI_nQUM8SfyT5KYyzZf5384'', { // Replace with your actual API endpoint
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
