@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatWindow = document.getElementById('chat-window');
     const userInput = document.getElementById('user-input');
 
-    const API_KEY = 'AIzaSyAyoEdqbfXz2iilTzNgR9CPEgBqUIE2q0k'; // Your API key
+    const API_KEY = 'AIzaSyBIl8QF2rAEcI_nQUM8SfyT5KYyzZf5384'; // Your API key
 
     function sendMessage(event) {
         if (event.key === 'Enter' || event.type === 'click') {
@@ -13,15 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 userInput.value = ''; // Clear input
 
                 // Send the message to the API
-                fetch('AIzaSyAyoEdqbfXz2iilTzNgR9CPEgBqUIE2q0k', {
+                fetch('https://your-api-endpoint.com/chat', { // Replace with your actual API endpoint
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${AIzaSyAyoEdqbfXz2iilTzNgR9CPEgBqUIE2q0k}` // Include the API key in the request
+                        'Authorization': `Bearer ${AIzaSyBIl8QF2rAEcI_nQUM8SfyT5KYyzZf5384}` // Include the API key in the request
                     },
                     body: JSON.stringify({ message: messageText }),
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     appendBotMessage(data.response); // Assuming the API returns a JSON object with a 'response' field
                 })
